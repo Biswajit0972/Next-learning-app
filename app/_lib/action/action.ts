@@ -14,7 +14,7 @@ import {Iuser} from "@/app/_lib/utils";
 
 export const userLogin = async (e: FormData) => {
 
-    const res = await fetch("http://localhost:3000/api/v1/public/login", {
+    const res = await fetch("https://next-learning-app-iota.vercel.app/api/v1/public/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -55,7 +55,7 @@ export async function userLogout() {
 export async function getUser(): Promise<{flag: boolean, user?: Iuser, message?: string}> {
     const cookieStore = await cookies();
 
-    const res = await fetch("http://localhost:3000/api/v1/protect/currentuser", {
+    const res = await fetch("https://next-learning-app-iota.vercel.app/api/v1/protect/currentuser", {
             headers: {
                 'content-type': 'application/json',
                 'Cookie': `token=${cookieStore.get("token")?.value}`
@@ -68,7 +68,7 @@ export async function getUser(): Promise<{flag: boolean, user?: Iuser, message?:
 
 export const userSignup = async (e: FormData) => {
 
-    const res = await fetch("http://localhost:3000/api/v1/public/signup", {
+    const res = await fetch("https://next-learning-app-iota.vercel.app/api/v1/public/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
