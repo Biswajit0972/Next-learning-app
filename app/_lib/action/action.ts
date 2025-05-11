@@ -7,7 +7,7 @@
  * we have to send cookies manually, using cookies from next/headers.
  *
  * */
-import {notFound, redirect} from "next/navigation";
+import { redirect} from "next/navigation";
 import {cookies} from "next/headers";
 import {Iuser} from "@/app/_lib/utils";
 
@@ -26,7 +26,7 @@ export const userLogin = async (e: FormData) => {
     const data = await res.json();
 
     if (!data.flag) {
-        notFound();
+       throw new Error(data.message || "Something went wrong");
     }
 
     const cookieStroe = await cookies();
@@ -81,7 +81,7 @@ export const userSignup = async (e: FormData) => {
 
 
     if (!data.flag) {
-        notFound();
+        throw new Error(data.message || "Something went wrong");
     }
 
 
