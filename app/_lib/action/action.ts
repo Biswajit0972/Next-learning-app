@@ -68,7 +68,7 @@ export async function getUser(): Promise<{flag: boolean, user?: Iuser, message?:
 
 export const userSignup = async (e: FormData) => {
 
-    const res = await fetch("http://localhost:3000/api/v1/public/signup", {
+    const res = await fetch("https://next-learning-app-iota.vercel.app/api/v1/public/signup", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
