@@ -66,3 +66,23 @@ export async function getUser(): Promise<{flag: boolean, user?: Iuser, message?:
     return await res.json();
 }
 
+export const userSignup = async (e: FormData) => {
+
+    const res = await fetch("http://localhost:3000/api/v1/public/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({email: e.get("email"), password: e.get("password"), name: e.get("name"), phone: e.get("phone")})
+    });
+
+
+    const data = await res.json();
+
+    if (!data.flag) {
+        notFound();
+    }
+    console.log(data)
+
+    return redirect("/auth/login")
+}

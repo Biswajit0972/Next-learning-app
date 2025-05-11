@@ -1,11 +1,12 @@
 import React from 'react'
-import Form from "@/app/_components/Form";
+import {userSignup} from "@/app/_lib/action/action";
+
 
 const Page = () => {
     return (
         <div className="h-full w-full  rounded-lg px-5 border-2 border-gary-500 flex-center">
                 <div className="relative w-1/2 bg-gray-600  rounded-lg overflow-hidden">
-                    <Form className="w-full relative p-4 space-y-4 " >
+                    <form className="w-full relative p-4 space-y-4 " action={userSignup}>
                         <h2 className="text-xl font-semibold text-center">Sign Up</h2>
 
                         <div>
@@ -54,7 +55,7 @@ const Page = () => {
                         >
                             Sign Up
                         </button>
-                    </Form>
+                    </form>
                 </div>
         </div>
     )
