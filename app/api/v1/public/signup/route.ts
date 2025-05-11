@@ -12,8 +12,8 @@ interface Idata {
 export const POST = async (req: NextRequest) => {
     try {
         await databaseConnection();
-        const {name, phone, email, password} = await req.json() as Idata;
 
+        const {name,  phone, email, password} = await req.json() as Idata;
         if ([name, phone, email, password].includes("undefined")) {
             return new NextResponse(JSON.stringify({"message": "Missing data"}), {
                 headers: {"Content-Type": "application/json"},
@@ -22,6 +22,7 @@ export const POST = async (req: NextRequest) => {
         }
 
         const createUser = await userModel.create({name, phone, email, password});
+
 
         if (!createUser) {
             return new NextResponse(JSON.stringify({"message": "Something went wrong while   creating user"}), {
@@ -37,7 +38,7 @@ export const POST = async (req: NextRequest) => {
 
     } catch (e: unknown) {
         console.log(e);
-        return new NextResponse(JSON.stringify({"message": "Something went wrong while   creating user"}), {
+        return new NextResponse(JSON.stringify({"message": "Something went wrong while  creating user"}), {
             headers: {"Content-Type": "application/json"},
             status: 500
         });
